@@ -1,7 +1,7 @@
 {
   "name": "xtenni-devicecloud-client",
   "version": "1.0.0",
-  "description": "An client web site for LMU message parsing service",
+  "description": "A client web site for LMU message parsing service",
   "author": {
     "name": "Bora Eryilmaz"
   },
