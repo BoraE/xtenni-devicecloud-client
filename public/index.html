@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Map My Car</title>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <main class="container">
+      <div class="row">
+        <h2 class="col-sm-12">My Car's Location</h2>
+      </div>
+
+      <div class="row">
+        <label class="col-sm-12" for="messages">Messages from LMU Devices</label>
+        <textarea class="col-sm-12 form-control" id="messages" rows="10" readonly></textarea>
+      </div>
+    </main>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script data-main="index" src="require.js"></script>
+  </body>
+</html>

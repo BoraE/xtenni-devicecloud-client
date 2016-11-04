@@ -1,7 +1,7 @@
 {
-  "name": "xtenni-devicecloud",
+  "name": "xtenni-devicecloud-client",
   "version": "1.0.0",
-  "description": "A node.js service for parsing LMU device messages",
+  "description": "An client web site for LMU message parsing service",
   "author": {
     "name": "Bora Eryilmaz"
   },
@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "express": "^4.14.0",
-    "mongodb": "^2.2.10",
     "socket.io": "^1.4.8",
     "socket.io-client": "^1.5.1"
   },
@@ -19,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Picotek-Wireless-Inc/xtenni-devicecloud"
+    "url": "https://github.com/BoraE/xtenni-devicecloud-client"
   },
   "scripts": {
     "start": "node app.js",
