@@ -18,7 +18,7 @@
   setInterval(() => {
     const req = {IMEI:"358683062687414", type:"last_location_message"};
     socket.emit('request', req, (data) => {
-      console.log('Last Message:', data);
+      console.log('Last Location Message:', data);
     });
   }, 60000);
 }());
