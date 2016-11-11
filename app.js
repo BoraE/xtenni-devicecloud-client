@@ -21,4 +21,9 @@
       console.log('Last Location Message:', data);
     });
   }, 60000);
+
+  const req =  {IMEI:"358683062687414", type:"reset_request"};
+  socket.emit('request', req, (data) => {
+    console.log('Reset requested', data);
+  });
 }());
