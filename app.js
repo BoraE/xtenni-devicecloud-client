@@ -22,8 +22,8 @@
     });
   }, 60000);
 
-  const req =  {IMEI:"358683062687414", type:"reset_request"};
-  socket.emit('request', req, (data) => {
-    console.log('Reset requested', data);
+  const req =  {IMEI:"358683062687414", type:"report_request", code: 9};
+  socket.emit('request', req, () => {
+    console.log('Reset requested');
   });
 }());
