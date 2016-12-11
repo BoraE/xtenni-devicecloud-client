@@ -16,13 +16,13 @@
   });
 
   setInterval(() => {
-    const req = {IMEI:"358683062687414", type:"last_location_message"};
+    const req = {IMEI:"358683062267480", type:"last_location_message"};
     socket.emit('request', req, (data) => {
       console.log('Last Location Message:', data);
     });
   }, 60000);
 
-  const req =  {IMEI:"358683062687414", type:"report_request", code: 9};
+  const req =  {IMEI:"358683062267480", type:"report_request", code: 1};
   socket.emit('request', req, () => {
     console.log('Reset requested');
   });
