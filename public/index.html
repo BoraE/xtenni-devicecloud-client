@@ -19,9 +19,16 @@
         <label class="col-sm-12" for="messages">Messages from LMU Devices</label>
         <textarea class="col-sm-12 form-control" id="messages" rows="10" readonly></textarea>
       </div>
+
+      <div class="row">
+        <label class="col-sm-12">Device Locations</label>
+        <div class="col-sm-12" id="map" style="height:250px; width: 100%;">
+        </div>
+      </div>
     </main>
 
     <script src="/socket.io/socket.io.js"></script>
     <script data-main="index" src="require.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVsaZZKoSuh3RZFECNcdoLW6ZFa-cpUPc"></script>
   </body>
 </html>

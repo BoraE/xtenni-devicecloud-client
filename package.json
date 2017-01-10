@@ -6,15 +6,17 @@
     "name": "Bora Eryilmaz"
   },
   "engines": {
-    "node": "6.9.1"
+    "node": "6.9.2"
   },
   "dependencies": {
     "express": "^4.14.0",
+    "mongodb": "^2.2.10",
     "socket.io": "^1.4.8",
     "socket.io-client": "^1.5.1"
   },
   "devDependencies": {
-    "jshint": "^2.9.2"
+    "jshint": "^2.9.2",
+    "mocha": "^3.1.2"
   },
   "repository": {
     "type": "git",
@@ -22,7 +24,13 @@
   },
   "scripts": {
     "start": "node app.js",
-    "watch": "nodemon -w . -e js -x 'npm run jshint'",
-    "jshint": "jshint . --exclude node_modules"
+    "watch": "nodemon --ignore 'out' -w . -e js -x 'npm run build'",
+
+    "build": "npm run build:js && npm run test",
+    "build:js": "npm run jshint && npm run jsdoc",
+
+    "jshint": "jshint . --exclude-path .gitignore",
+    "jsdoc": "jsdoc -c conf.json -r ./",
+    "test": "mocha"
   }
 }

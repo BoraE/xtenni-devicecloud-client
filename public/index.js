@@ -1,3 +1,4 @@
+//  Copyright 2017 Bora Eryilmaz
 require.config({
   baseURL: "./",
   paths: {},
