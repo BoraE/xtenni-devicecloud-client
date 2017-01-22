@@ -26,11 +26,13 @@ define([], function(config) {
 
     send_request() {
       const IMEI = ['358683062687414', '358683062267480', '270113183009699599'];
-      // Action Code (1:reboot, 9:ID, 10:locate, 15:state)
-      const req = {IMEI:IMEI[0], type:'report_request', code: 10};
-      //const req = {IMEI:IMEI[0], type:'last_location_message'};
-      // const req = {ID:'586ecf6e6234d91201c9b33b', IMEI:IMEI[1], type:'all_messages_after'};
-      this.socket.emit('request', req);
+      IMEI.forEach((value) => {
+        // Action Code (1:reboot, 9:ID, 10:locate, 15:state)
+        const req = {IMEI:value, type:'report_request', code: 10};
+        //const req = {IMEI:IMEI[0], type:'last_location_message'};
+        //const req = {ID:'586ecf6e6234d91201c9b33b', IMEI:IMEI[1], type:'all_messages_after'};
+        this.socket.emit('request', req);
+      })
     }
 
     _showMessage(data) {
