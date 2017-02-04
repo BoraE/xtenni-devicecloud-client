@@ -19,7 +19,7 @@ class Server {
     });
 
     this.device_cloud.on('message', (data) => {
-      console.log('Message:', data);
+      console.log(`Message (Type: ${data.Message.Message_Header.Message_Type}, Event Code: ${data.Message.Message_Contents.Event_Code}) received from ESN:${data.ESN} (VIN:${data.VIN})`);
       this.handle_LMU_message(data);
     });
 
@@ -30,7 +30,7 @@ class Server {
 
   startServer() {
     const app = express();
-    app.set('port', (process.env.PORT || 8000));
+    app.set('port', (process.env.PORT || 8080));
     app.use(express.static(__dirname + '/../public'));
 
     // Start the HTTP server
@@ -41,8 +41,9 @@ class Server {
 
     // Wait for socket connections
     this.io = require('socket.io')(server);
-    this.io.on('connection', (socket) => {
-      console.log(`Socket connection established from ${socket.conn.remoteAddress}.`);
+      this.io.on('connection', (socket) => {
+        let address = socket.conn.remoteAddress.replace(/[^0-9|.]*/g, '');
+        console.log(`Socket connection established from ${address}.`);
 
       socket.on('request', (req) => {
         console.log('Request:', req);
@@ -52,7 +53,7 @@ class Server {
       socket.on('disconnect', () => {
         console.log('Socket disconnected.');
       });
-    });
+      });
   }
 
   handle_client_request(req) {

@@ -18,7 +18,7 @@ define([], function(config) {
         zoom: 16,
         streetViewControl: false,
         mapTypeControlOptions: {
-          mapTypeIds: [google.maps.MapTypeId.ROADMAP]
+          mapTypeIds: ['roadmap', 'satellite']
         }
       };
       this.map = new google.maps.Map(document.getElementById('map'), mapOptions);
@@ -43,6 +43,7 @@ define([], function(config) {
 
       if (message.Message_Contents.Longitude) {
         if (!this.locations[device]) {
+          // var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
           this.locations[device] = new google.maps.Marker({
             map: this.map,
             title: `ESN: ${device}\nVIN: ${data.VIN}`
