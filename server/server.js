@@ -30,7 +30,7 @@ class Server {
 
   startServer() {
     const app = express();
-    app.set('port', (process.env.PORT || 8080));
+    app.set('port', (process.env.PORT || 8001));
     app.use(express.static(__dirname + '/../public'));
 
     // Start the HTTP server

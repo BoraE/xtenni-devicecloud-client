@@ -32,7 +32,7 @@ define([], function(config) {
         const req = {IMEI:value, type:'report_request', code: 10};
         //const req = {IMEI:value, type:'last_location_message'};
         //const req = {ID:'586ecf6e6234d91201c9b33b', IMEI:value, type:'all_messages_after'};
-        this.socket.emit('request', req);
+        //this.socket.emit('request', req);
       })
     }
 
