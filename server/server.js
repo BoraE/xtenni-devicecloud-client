@@ -12,7 +12,7 @@ class Server {
   startSocket() {
     const url = 'http://ec2-107-22-152-194.compute-1.amazonaws.com:8000';
     // const url = 'http://localhost:8000';
-    this.device_cloud = require('socket.io-client')(url);
+    this.device_cloud = require('socket.io-client')(url, {query: {'api_key': 'AS8GE5342G4GFD74'}});
 
     this.device_cloud.on('connect', () => {
       console.log('Connected to LMU service at', url);
@@ -25,6 +25,10 @@ class Server {
 
     this.device_cloud.on('disconnect', () => {
       console.log('Connection to LMU service disconnected');
+    });
+
+    this.device_cloud.on('error', (err) => {
+      console.log('Error:', err);
     });
   }
 
@@ -41,9 +45,9 @@ class Server {
 
     // Wait for socket connections
     this.io = require('socket.io')(server);
-      this.io.on('connection', (socket) => {
-        let address = socket.conn.remoteAddress.replace(/[^0-9|.]*/g, '');
-        console.log(`Socket connection established from ${address}.`);
+    this.io.on('connection', (socket) => {
+      let address = socket.conn.remoteAddress.replace(/[^0-9|.]*/g, '');
+      console.log(`Socket connection established from ${address}.`);
 
       socket.on('request', (req) => {
         console.log('Request:', req);
@@ -51,7 +55,7 @@ class Server {
       });
 
       socket.on('disconnect', () => {
-        console.log('Socket disconnected.');
+        console.log(`Socket from ${address} disconnected.`);
       });
       });
   }
@@ -59,7 +63,7 @@ class Server {
   handle_client_request(req) {
     if (this.device_cloud) {
       this.device_cloud.emit('request', req, (data) => {
-        console.log(data);
+        console.log('Response:', data);
       });
     }
   }
@@ -72,4 +76,3 @@ class Server {
 }
 
 module.exports = Server;
-
