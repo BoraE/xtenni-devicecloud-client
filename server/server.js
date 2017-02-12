@@ -1,4 +1,4 @@
-//  Copyright 2017 Bora Eryilmaz
+// Copyright 2017 Bora Eryilmaz
 'use strict';
 
 const express = require('express');
@@ -64,6 +64,7 @@ class Server {
     if (this.device_cloud) {
       this.device_cloud.emit('request', req, (data) => {
         console.log('Response:', data);
+        this.handle_LMU_message(data);
       });
     }
   }
