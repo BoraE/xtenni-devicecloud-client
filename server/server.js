@@ -50,7 +50,7 @@ class Server {
       console.log(`Socket connection established from ${address}.`);
 
       socket.on('request', (req) => {
-        console.log('Request:', req);
+        //console.log('Request:', req);
         this.handle_client_request(req);
       });
 
@@ -63,7 +63,7 @@ class Server {
   handle_client_request(req) {
     if (this.device_cloud) {
       this.device_cloud.emit('request', req, (data) => {
-        console.log('Response:', data);
+        //console.log('Response:', data);
         this.handle_LMU_message(data);
       });
     }
