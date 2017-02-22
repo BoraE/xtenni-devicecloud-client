@@ -36,7 +36,7 @@ define([], function(config) {
         //const req = {IMEI:value, type:'report_request', code: 10};
         const req = {IMEI:value, type:'last_location_message'};
         //const req = {ID:'5890c157d016366089909a68', IMEI:value, type:'all_messages_after'};
-        this.socket.emit('request', req);
+        //this.socket.emit('request', req);
       })
     }
 
@@ -94,7 +94,7 @@ define([], function(config) {
       if (this.routes[device].moving) {
         this.routes[device].getPath().push(pos);
       }
-      console.log(this.routes[device]);
+      // console.log(this.routes[device]);
     }
   }
 
