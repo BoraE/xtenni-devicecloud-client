@@ -4,7 +4,8 @@ define([], function(config) {
 
   class App {
     constructor() {
-      this.locations = {};
+      this.markers = {};
+      this.routes = {};
       this.initMap();
       this.socket = io.connect(window.location.host);
       this.messageArea = document.querySelector('#messages');
@@ -40,7 +41,7 @@ define([], function(config) {
     }
 
     _showMessage(data) {
-      console.log(data);
+      //console.log(data);
       const device = data.ESN;
       const message = data.Message;
 
@@ -52,20 +53,48 @@ define([], function(config) {
       this.messageArea.value += `Message (type ${message.Message_Header.Message_Type}) received from ${device} (VIN: ${data.VIN}) at ${time}\n`;
 
       if (message.Message_Contents.Longitude) {
-        if (!this.locations[device]) {
-          this.locations[device] = new google.maps.Marker({
-            map: this.map,
-            title: `ESN: ${device}\nVIN: ${data.VIN}`
-          });
-        }
-
-        let pos = {
-          lat: message.Message_Contents.Latitude,
-          lng: message.Message_Contents.Longitude
-        };
-        this.locations[device].setPosition(pos);
-        this.map.setCenter(pos);
+        const event = message.Message_Contents.Event_Code;
+        const pos = new google.maps.LatLng(message.Message_Contents.Latitude, message.Message_Contents.Longitude);
+        this._updateMarkers(device, pos, event, data.VIN);
+        this._updateRoutes(device, pos, event);
       }
+    }
+
+    _updateMarkers(device, pos, event, VIN) {
+      if (!this.markers[device]) {
+        this.markers[device] = new google.maps.Marker({
+          map: this.map,
+          title: `ESN: ${device}\nVIN: ${VIN}`
+        });
+      }
+      this.markers[device].setPosition(pos);
+      this.map.setCenter(pos);
+      // console.log(this.markers[device]);
+    }
+
+    _updateRoutes(device, pos, event) {
+      if (!this.routes[device]) {
+        this.routes[device] = new google.maps.Polyline({
+          strokeColor: '#FF0000',
+          strokeOpacity: 1.0,
+          strokeWeight: 2
+        });
+        this.routes[device].setMap(this.map);
+      }
+
+      if (event === 101) {
+        this.routes[device].moving = true;
+        this.routes[device].getPath().clear();
+      }
+
+      if (event === 102) {
+        this.routes[device].false = true;
+      }
+
+      if (this.routes[device].moving) {
+        this.routes[device].getPath().push(pos);
+      }
+      console.log(this.routes[device]);
     }
   }
 
