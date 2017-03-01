@@ -1,0 +1,22 @@
+{
+  "production": {
+    "server": {
+      "port": 8001
+    },
+    "device_cloud": {
+      "url" : "http://ec2-107-22-152-194.compute-1.amazonaws.com",
+      "port": 8000,
+      "api_key": "AS8GE5342G4GFD74"
+    }
+  },
+  "stage": {
+    "server": {
+      "port": 8001
+    },
+    "device_cloud": {
+      "url" : "http://69.46.234.168",
+      "port": 7617,
+      "api_key": "AS8GE5342G4GFD74"
+    }
+  }
+}
