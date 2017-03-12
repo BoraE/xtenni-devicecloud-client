@@ -3,7 +3,7 @@
 
 let config = {};
 
-if (process.env.NODE_ENV === "STAGE") {
+if (process.env.NODE_ENV === "stage") {
   config = require('./server_config.json').stage;
 } else {
   config = require('./server_config.json').production;

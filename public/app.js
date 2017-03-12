@@ -37,7 +37,7 @@ define([], function(config) {
         const req = {IMEI:value, type:'last_location_message'};
         //const req = {ID:'5890c157d016366089909a68', IMEI:value, type:'all_messages_after'};
         //this.socket.emit('request', req);
-      })
+      });
     }
 
     _showMessage(data) {
