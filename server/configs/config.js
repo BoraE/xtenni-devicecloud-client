@@ -3,10 +3,16 @@
 
 let config = {};
 
-if (process.env.NODE_ENV === "stage") {
+switch (process.env.NODE_ENV) {
+case "local":
+  config = require('./server_config.json').local;
+  break;
+case "stage":
   config = require('./server_config.json').stage;
-} else {
+  break;
+case "production":
   config = require('./server_config.json').production;
+  break;
 }
 
 module.exports = config;

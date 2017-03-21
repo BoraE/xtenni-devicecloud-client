@@ -19,5 +19,16 @@
       "port": 7617,
       "api_key": "AS8GE5342G4GFD74"
     }
+  },
+
+  "local": {
+    "server": {
+      "port": 8001
+    },
+    "device_cloud": {
+      "url" : "http://localhost",
+      "port": 8000,
+      "api_key": "AS8GE5342G4GFD74"
+    }
   }
 }
