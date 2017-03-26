@@ -11,6 +11,7 @@ case "stage":
   config = require('./server_config.json').stage;
   break;
 case "production":
+default:
   config = require('./server_config.json').production;
   break;
 }
