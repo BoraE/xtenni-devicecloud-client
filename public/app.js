@@ -31,12 +31,12 @@ define([], function(config) {
                     '358683060656908', '352648069629202', '352648060600103',
                     '357041062469575', '357041062525111', '357041062472835',
                     '357041062542454'];
-      IMEI.forEach((value) => {
+      IMEI.slice(9,10).forEach((value) => {
         // Action Code (1:reboot, 9:ID, 10:locate, 15:state)
         //const req = {IMEI:value, type:'report_request', code: 10};
         const req = {IMEI:value, type:'last_location_message'};
         //const req = {ID:'5890c157d016366089909a68', IMEI:value, type:'all_messages_after'};
-        //this.socket.emit('request', req);
+        this.socket.emit('request', req);
       });
     }
 
@@ -50,7 +50,7 @@ define([], function(config) {
       }
 
       const time = new Date().toLocaleTimeString();
-      this.messageArea.value += `Message (type ${message.Message_Header.Message_Type}) received from ${device} (VIN: ${data.VIN}) at ${time}\n`;
+      this.messageArea.value += `Message (type: ${message.Message_Header.Message_Type}, code: ${message.Message_Contents.Event_Code}) received from ${device} (VIN: ${data.VIN}, IMEI: ${data.IMEI}) at ${time}\n`;
 
       if (message.Message_Contents.Longitude) {
         const event = message.Message_Contents.Event_Code;
