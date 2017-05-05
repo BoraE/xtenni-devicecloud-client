@@ -31,7 +31,7 @@ define([], function(config) {
                     '358683060656908', '352648069629202', '352648060600103',
                     '357041062469575', '357041062525111', '357041062472835',
                     '357041062542454'];
-      IMEI.slice(9,10).forEach((value) => {
+      IMEI.slice(12,13).forEach((value) => {
         // Action Code (1:reboot, 9:ID, 10:locate, 15:state)
         //const req = {IMEI:value, type:'report_request', code: 10};
         const req = {IMEI:value, type:'last_location_message'};
