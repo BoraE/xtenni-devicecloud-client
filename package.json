@@ -26,10 +26,8 @@
   "scripts": {
     "start": "node app.js",
     "watch": "nodemon --ignore 'out' -w . -e js -x 'npm run build'",
-
     "build": "npm run build:js && npm run test",
     "build:js": "npm run jshint && npm run jsdoc",
-
     "jshint": "jshint . --exclude-path .gitignore",
     "jsdoc": "jsdoc -c conf.json -r ./",
     "test": "mocha"

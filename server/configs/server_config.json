@@ -15,7 +15,7 @@
       "port": 8001
     },
     "device_cloud": {
-      "url" : "http://69.46.234.168",
+      "url" : "http://64.112.177.39",
       "port": 7617,
       "api_key": "AS8GE5342G4GFD74"
     }
