@@ -7,7 +7,7 @@ define([], function(config) {
       this.markers = {};
       this.routes = {};
       this.initMap();
-      this.socket = io.connect(window.location.host);
+      this.socket = io(window.location.host);
       this.messageArea = document.querySelector('#messages');
       this.socket.on('message', data => this._showMessage(data));
       this.send_request();

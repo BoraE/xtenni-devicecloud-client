@@ -5,19 +5,22 @@
   "author": {
     "name": "Bora Eryilmaz"
   },
+  "license": "UNLICENSED",
+  "private": true,
   "engines": {
-    "node": "6.9.4"
+    "node": "8.9.1"
   },
   "dependencies": {
-    "express": "^4.14.0",
-    "mongodb": "^2.2.10",
-    "socket.io": "^1.4.8",
-    "socket.io-client": "^1.5.1"
+    "express": "^4.16.2",
+    "mongodb": "^2.2.33",
+    "socket.io": "^2.0.4",
+    "socket.io-client": "^2.0.4"
   },
   "devDependencies": {
-    "jsdoc": "^3.4.3",
-    "jshint": "^2.9.2",
-    "mocha": "^3.1.2"
+    "jsdoc": "^3.5.5",
+    "jshint": "^2.9.5",
+    "mocha": "^4.0.1",
+    "stylus": "^0.54.5"
   },
   "repository": {
     "type": "git",
@@ -25,11 +28,13 @@
   },
   "scripts": {
     "start": "node app.js",
-    "watch": "nodemon --ignore 'out' -w . -e js -x 'npm run build'",
-    "build": "npm run build:js && npm run test",
+    "watch": "NODE_ENV=local nodemon --ignore 'out' -w . -e js,styl -x 'npm run build'",
+    "build": "npm run build:css && npm run build:js && npm run test",
     "build:js": "npm run jshint && npm run jsdoc",
+    "build:css": "npm run stylus",
     "jshint": "jshint . --exclude-path .gitignore",
     "jsdoc": "jsdoc -c conf.json -r ./",
+    "stylus": "stylus -m -c public/styl/*.styl -o public/css",
     "test": "mocha"
   }
 }
