@@ -4,7 +4,7 @@
       "port": 8001
     },
     "device_cloud": {
-      "url" : "http://ec2-107-22-152-194.compute-1.amazonaws.com",
+      "url" : "http://ec2-54-159-1-245.compute-1.amazonaws.com",
       "port": 8000,
       "api_key": "AS8GE5342G4GFD74"
     }
