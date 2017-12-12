@@ -10,6 +10,5 @@ let config = sc[env];
 // Merge
 Object.assign(common.device_cloud, config.device_cloud);
 Object.assign(config, common);
-console.log(config);
 
 module.exports = config;
