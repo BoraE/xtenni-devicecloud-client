@@ -42,21 +42,25 @@ define([], function(config) {
 
     _showMessage(data) {
       //console.log(data);
-      const device = data.ESN;
       const message = data.Message;
 
       if (message === undefined) {
         return;
       }
 
-      const time = new Date().toLocaleTimeString();
-      this.messageArea.value += `Message (type: ${message.Message_Header.Message_Type}, code: ${message.Message_Contents.Event_Code}) received from ${device} (VIN: ${data.VIN}, IMEI: ${data.IMEI}) at ${time}\n`;
+      if (message.Message_Header) {
+        const device = data.ESN;
+        const time = new Date().toLocaleTimeString();
+        this.messageArea.value += `Message (type: ${message.Message_Header.Message_Type}, code: ${message.Message_Contents.Event_Code}) received from ${device} (VIN: ${data.VIN}, IMEI: ${data.IMEI}) at ${time}\n`;
 
-      if (message.Message_Contents.Longitude) {
-        const event = message.Message_Contents.Event_Code;
-        const pos = new google.maps.LatLng(message.Message_Contents.Latitude, message.Message_Contents.Longitude);
-        this._updateMarkers(device, pos, event, data.VIN);
-        this._updateRoutes(device, pos, event);
+        if (message.Message_Contents.Longitude) {
+          const event = message.Message_Contents.Event_Code;
+          const pos = new google.maps.LatLng(message.Message_Contents.Latitude, message.Message_Contents.Longitude);
+          this._updateMarkers(device, pos, event, data.VIN);
+          this._updateRoutes(device, pos, event);
+        }
+      } else {
+        this.messageArea.value += JSON.stringify(data, null, 2);
       }
     }
 

@@ -18,7 +18,7 @@
   },
   "devDependencies": {
     "jsdoc": "^3.5.5",
-    "jshint": "^2.9.5",
+    "jshint": "^2.9.6",
     "mocha": "^4.0.1",
     "stylus": "^0.54.5"
   },
