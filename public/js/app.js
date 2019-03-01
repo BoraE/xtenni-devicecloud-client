@@ -26,12 +26,8 @@ define([], function(config) {
     }
 
     send_request() {
-      const IMEI = ['358683062687414', '358683062267480', '270113183009699599',
-                    '358683060203792', '358683060871481', '358683062400081',
-                    '358683060656908', '352648069629202', '352648060600103',
-                    '357041062469575', '357041062525111', '357041062472835',
-                    '357041062542454', 'A1000021D12D67',  'A1000021D12FE0'];
-      IMEI.slice(13,15).forEach((value) => {
+      const IMEI = ['357766094237364', '357766094226037'];
+      IMEI.forEach((value) => {
         // Action Code (1:reboot, 9:ID, 10:locate, 15:state)
         //const req = {IMEI:value, type:'report_request', code: 10};
         const req = {IMEI:value, type:'last_location_message'};
