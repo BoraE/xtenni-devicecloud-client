@@ -62,7 +62,7 @@ class Server {
 
     this.device_cloud.on('message', (data) => {
       if (data.Message.Message_Header) {
-        console.log(`Message (Type: ${data.Message.Message_Header.Message_Type}, Event Code: ${data.Message.Message_Contents.Event_Code}) received from ESN:${data.ESN} (VIN:${data.VIN})`);
+        console.log(`Message (Type: ${data.Message.Message_Header.Message_Type}, Event Code: ${data.Message.Message_Contents.Event_Code}) received from ESN:${data.ESN} (SIM:${data.SIM})`);
       }
       this.handle_LMU_message(data);
     });

@@ -47,12 +47,12 @@ define([], function(config) {
       if (message.Message_Header) {
         const device = data.ESN;
         const time = new Date().toLocaleTimeString();
-        this.messageArea.value += `Message (type: ${message.Message_Header.Message_Type}, code: ${message.Message_Contents.Event_Code}) received from ${device} (VIN: ${data.VIN}, IMEI: ${data.IMEI}) at ${time}\n`;
+        this.messageArea.value += `Message (type: ${message.Message_Header.Message_Type}, code: ${message.Message_Contents.Event_Code}) received from ${device} (SIM: ${data.SIM}, IMEI: ${data.IMEI}) at ${time}\n`;
 
         if (message.Message_Contents.Longitude) {
           const event = message.Message_Contents.Event_Code;
           const pos = new google.maps.LatLng(message.Message_Contents.Latitude, message.Message_Contents.Longitude);
-          this._updateMarkers(device, pos, event, data.VIN);
+          this._updateMarkers(device, pos, event, data.SIM);
           this._updateRoutes(device, pos, event);
         }
       } else {
@@ -60,11 +60,11 @@ define([], function(config) {
       }
     }
 
-    _updateMarkers(device, pos, event, VIN) {
+    _updateMarkers(device, pos, event, SIM) {
       if (!this.markers[device]) {
         this.markers[device] = new google.maps.Marker({
           map: this.map,
-          title: `ESN: ${device}\nVIN: ${VIN}`
+          title: `ESN: ${device}\nSIM: ${SIM}`
         });
       }
       this.markers[device].setPosition(pos);
