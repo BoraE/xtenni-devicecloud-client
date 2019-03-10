@@ -80,6 +80,7 @@ define([], function(config) {
           strokeWeight: 2
         });
         this.routes[device].setMap(this.map);
+        this.routes[device].moving = true;
       }
 
       if (event === 101) {
@@ -88,7 +89,7 @@ define([], function(config) {
       }
 
       if (event === 102) {
-        this.routes[device].false = true;
+        this.routes[device].moving = false;
       }
 
       if (this.routes[device].moving) {
