@@ -10,7 +10,7 @@
 
   "production": {
     "device_cloud": {
-      "url" : "http://ec2-54-159-1-245.compute-1.amazonaws.com",
+      "url" : "http://ec2-3-212-67-95.compute-1.amazonaws.com",
       "port": 8000
     }
   },
