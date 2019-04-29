@@ -15,7 +15,7 @@
     }
   },
 
-  "stage": {
+  "staging": {
     "device_cloud": {
       "url" : "http://64.112.177.39",
       "port": 7617
